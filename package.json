@@ -5,7 +5,9 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
@@ -43,6 +45,8 @@
     "build": "tsup"
   },
   "devDependencies": {
+    "@types/react": "^18.2.74",
+    "@types/react-native": "^0.73.0",
     "prettier": "^3.2.5",
     "tsup": "^8.0.2",
     "typescript": "^5.4.3"
