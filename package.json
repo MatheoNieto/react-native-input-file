@@ -1,0 +1,53 @@
+{
+  "name": "react-native-input-file",
+  "version": "1.0.0",
+  "description": "library for manage files in the react native projects",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MatheoNieto/react-native-input-file.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatheoNieto/react-native-input-file/issues"
+  },
+  "author": "Mateo Nieto <matheo.developer@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "expo",
+    "form",
+    "files",
+    "attachments",
+    "upload files",
+    "multiple",
+    "single",
+    "customizable",
+    "placeholder",
+    "sub-item",
+    "component",
+    "react",
+    "reactnative",
+    "react-native",
+    "react native",
+    "android",
+    "ios",
+    "javascript"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^13.0.0"
+  }
+}
