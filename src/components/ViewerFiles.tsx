@@ -1,30 +1,24 @@
 import React from 'react';
-import {Dimensions, Platform, StyleSheet,  View} from 'react-native';
+import {Dimensions,  StyleSheet, Text } from 'react-native';
 import {BottomSheet, BottomSheetRef} from 'react-native-sheet';
-import PdfViewer from './PdfViewer';
 
-import {formatImages, formatPdf} from './types';
+import {formatImages, } from './types';
 import ViewerImage from "./ViewerImage";
 type Props = {
 	typeFile: string;
-	nameFile: string;
 	url: string;
 	visible: boolean;
 	onClose?: () => void;
-	download?: boolean;
 };
 const {height: heightScreen} = Dimensions.get('screen');
 
 const ViewerFiles: React.FC<Props> = ({
 	                                      typeFile,
-	                                      nameFile,
 	                                      url,
 	                                      visible,
 	                                      onClose,
-	                                      download = true,
                                       }) => {
 
-	const isPdf = formatPdf.includes(typeFile);
 	const isImage = formatImages.includes(typeFile);
 	const bottomSheet = React.useRef<BottomSheetRef>(null);
 
@@ -36,7 +30,6 @@ const ViewerFiles: React.FC<Props> = ({
 			bottomSheet.current?.hide();
 		}
 	}, [visible]);
-
 
 
 	if (isImage) {
@@ -56,10 +49,7 @@ const ViewerFiles: React.FC<Props> = ({
 				draggable={false}
 				sheetStyle={{backgroundColor: 'white'}}
 			>
-				{Platform.OS == 'ios' && <View style={{height: 25}} />}
-				<View style={styles.contentClose}>
-				</View>
-				<PdfViewer url={url} />
+				<Text style={styles.textUnsupport}>Sorry, unsupported media type</Text>
 			</BottomSheet>
 		);
 

@@ -4,3 +4,4 @@ src
 .prettierrc
 tsupconfig.ts
 tsconfig.json
+package.lock.json
