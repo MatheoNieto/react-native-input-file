@@ -14,5 +14,17 @@ export const Styles = StyleSheet.create({
 		fontSize: 16,
 		textAlign: 'center',
 		marginHorizontal: 4,
+	},
+	containerFileType: {
+		borderRadius: 8,
+		padding: 20,
+		borderWidth: 1,
+		borderColor: '#EBEBEB',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	labelContainer: {
+		fontSize: 16,
+		color: 'black'
 	}
 })

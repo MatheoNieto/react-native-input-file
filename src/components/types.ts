@@ -36,3 +36,12 @@ export type ButtonProps = {
 	isLoading?: boolean;
 	iconSize?: number;
 }
+
+export type ContainerProps = {
+	containerStyle?: ViewStyle;
+	labelContainer?: TextStyle;
+	onPress?: () => void;
+	label: string;
+	iconColor: string;
+	required?: boolean;
+}

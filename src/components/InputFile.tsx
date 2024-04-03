@@ -1,10 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {Button, TypeButton} from './Button';
 import PreviewFilesSelected from './PreviewFilesSelected';
 import {Ionicons} from "@expo/vector-icons";
 import ModalOptionsUploadFile from "./ModalOptionsUploadFile";
 import {InputFileProps} from "./types";
+import Container from "./Container";
 
 const InputFile: React.FC<InputFileProps> = ({
 	      label,
@@ -16,7 +16,6 @@ const InputFile: React.FC<InputFileProps> = ({
 	      isRequired = false,
 	      buttonStyle = {},
 	      labelButtonStyle = {},
-	      defaultValue = [],
 	      onRemoveFile,
 	      noConcatenation = false
       }) => {
@@ -24,8 +23,6 @@ const InputFile: React.FC<InputFileProps> = ({
 	const [filesSelected, setFilesSelected] = React.useState<FileSelectedType[]>([]);
 	const [showModalMenu, setShowModalMenu] = React.useState(false);
 
-	const {theme} = useTheme();
-	const styles = makeStyles(theme)
 
 	React.useEffect(() => {
 		if (!defaultValue || defaultValue.length === 0) return;
@@ -70,14 +67,7 @@ const InputFile: React.FC<InputFileProps> = ({
 					}, buttonStyle])}
 				/>
 			) : (
-				<TouchableOpacity
-					style={styles.containerFileType}
-					activeOpacity={1}
-					onPress={() => setShowModalMenu(!showModalMenu)}>
-					<Ionicons name="md-cloud-upload-outline" size={24} color={palette.PrimaryButton}/>
-					<Text style={styles.labelContainer}>{label ?? 'Upload'}{isRequired &&
-            <Text style={{color: 'red'}}>*</Text>}</Text>
-				</TouchableOpacity>
+				<Container />
 			)}
 			{renderPreviewFiles}
 			<ModalOptionsUploadFile
