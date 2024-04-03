@@ -23,12 +23,17 @@ export type FileSelectedType = {
 	fileSize: number
 	fileName: string;
 }
+export const MediaTypes = {
+	images: 'image/*',
+	pdf: 'pdf/*',
+	all: '*/*',
+};
 
 export type ButtonProps = {
 	colorLoading?: string;
 	icon?: keyof typeof Ionicons.glyphMap;
 	iconColor?: string;
-	label: string;
+	label?: string;
 	onPress: () => void;
 	contentStyle?: ViewStyle;
 	labelStyle?: TextStyle;
@@ -45,3 +50,25 @@ export type ContainerProps = {
 	iconColor: string;
 	required?: boolean;
 }
+
+
+export type CardAttachmentProps = {
+	name: string;
+	type: string;
+	linkAttachment: string;
+	downloadFile?: boolean;
+	onRemove?: () => void;
+	horizontal?: boolean;
+	withIcon?: boolean;
+	isLoading?: boolean;
+};
+
+export const formatImages = ['gif', 'png', 'bmp', 'jpeg', 'jpg'];
+export const formatPdf = ['pdf'];
+
+export const get_url_extension = (url: string) => {
+	if (!url) return '';
+
+	return url.split(/[#?]/)[0].split('.').pop()?.trim();
+};
+

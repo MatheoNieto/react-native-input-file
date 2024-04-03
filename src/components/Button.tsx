@@ -17,9 +17,9 @@ const Button: React.FC<ButtonProps> = ({label, onPress, icon,labelStyle,colorLoa
 			{isLoading && (
 				<ActivityIndicator size="small" color={colorLoading ?? iconColor} />
 			)}
-			<Text style={[Styles.labelButton, labelStyle, disabled && {color: '#ADADAD'}]}>
+			{label && <Text style={[Styles.labelButton, labelStyle, disabled && {color: '#ADADAD'}]}>
 				{label}
-			</Text>
+			</Text>}
 		</Pressable>
 	)
 }
