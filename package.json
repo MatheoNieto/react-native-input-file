@@ -22,7 +22,7 @@
   },
   "private": false,
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/MatheoNieto"
+    "@MatheoNieto:registry": "https://npm.pkg.github.com"
   },
   "author": "Mateo Nieto <matheo.developer@gmail.com>",
   "license": "MIT",
