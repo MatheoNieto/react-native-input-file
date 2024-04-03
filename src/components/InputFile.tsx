@@ -1,10 +1,10 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet} from 'react-native';
 import PreviewFilesSelected from './PreviewFilesSelected';
-import {Ionicons} from "@expo/vector-icons";
 import ModalOptionsUploadFile from "./ModalOptionsUploadFile";
-import {InputFileProps} from "./types";
+import {FileSelectedType, InputFileProps} from "./types";
 import Container from "./Container";
+import Button from "./Button";
 
 const InputFile: React.FC<InputFileProps> = ({
 	      label,
@@ -23,11 +23,6 @@ const InputFile: React.FC<InputFileProps> = ({
 	const [filesSelected, setFilesSelected] = React.useState<FileSelectedType[]>([]);
 	const [showModalMenu, setShowModalMenu] = React.useState(false);
 
-
-	React.useEffect(() => {
-		if (!defaultValue || defaultValue.length === 0) return;
-		setFilesSelected(defaultValue)
-	}, [defaultValue])
 
 	const setFilesAssets = (fileAssets: FileSelectedType[]) => {
 		setShowModalMenu(false);
@@ -57,8 +52,7 @@ const InputFile: React.FC<InputFileProps> = ({
 			{type === "button" ? (
 				<Button
 					onPress={() => setShowModalMenu(!showModalMenu)}
-					title={label ?? 'Upload'}
-					type={TypeButton.TEXT}
+					label={label ?? 'Upload'}
 					labelStyle={StyleSheet.flatten([{color: '#1F3552'}, labelButtonStyle])}
 					contentStyle={StyleSheet.flatten([{
 						padding: 0,
@@ -67,7 +61,7 @@ const InputFile: React.FC<InputFileProps> = ({
 					}, buttonStyle])}
 				/>
 			) : (
-				<Container />
+				<Container iconColor={"#1F3552"} onPress={() => setShowModalMenu(!showModalMenu)} label={label ?? 'Upload'} required={isRequired} />
 			)}
 			{renderPreviewFiles}
 			<ModalOptionsUploadFile

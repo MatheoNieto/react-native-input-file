@@ -1,4 +1,4 @@
-import {View, StyleSheet, Alert} from "react-native";
+import {View, StyleSheet} from "react-native";
 import React from "react";
 import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from "expo-document-picker";
