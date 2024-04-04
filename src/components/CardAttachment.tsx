@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import ViewerFiles from './ViewerFiles';
 import {Ionicons} from '@expo/vector-icons';
-import {Skeleton} from 'moti/skeleton'
 import GetIconType from './GetIconType';
 import { CardAttachmentProps } from './types';
 
@@ -11,11 +10,9 @@ const CardAttachment: React.FC<CardAttachmentProps> = ({
 	                                                       name,
 	                                                       type,
 	                                                       linkAttachment,
-	                                                       downloadFile = true,
 	                                                       onRemove,
 	                                                       horizontal = false,
 	                                                       withIcon = false,
-	                                                       isLoading = false
                                                        }) => {
 	const [visibleViewer, setVisibleViewer] = React.useState(false);
 	const handleShowImage = () => {
@@ -32,7 +29,6 @@ const CardAttachment: React.FC<CardAttachmentProps> = ({
 						? styles.containerCardHorizontal
 						: styles.containerCard
 				}>
-				<Skeleton show={isLoading} colorMode='light'>
 					<View style={horizontal ? styles.contentHorizontal : styles.content}>
 						{withIcon && (
 							<GetIconType/>
@@ -52,17 +48,13 @@ const CardAttachment: React.FC<CardAttachmentProps> = ({
 							</TouchableOpacity>
 						)}
 					</View>
-				</Skeleton>
-
 			</TouchableOpacity>
 
 			<ViewerFiles
-				nameFile={name}
 				typeFile={type}
 				url={linkAttachment}
 				visible={visibleViewer}
 				onClose={() => setVisibleViewer(false)}
-				download={downloadFile}
 			/>
 		</>
 	);
