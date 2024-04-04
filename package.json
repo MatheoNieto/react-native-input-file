@@ -1,6 +1,6 @@
 {
   "name": "react-native-input-file",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "library for manage files in the react native projects",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
