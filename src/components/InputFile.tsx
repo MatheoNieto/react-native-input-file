@@ -2,22 +2,21 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import PreviewFilesSelected from './PreviewFilesSelected';
 import ModalOptionsUploadFile from "./ModalOptionsUploadFile";
-import {FileSelectedType, InputFileProps} from "./types";
+import {FileSelectedType, InputFileContainerProps, InputFileButtonProps} from "./types";
 import Container from "./Container";
 import Button from "./Button";
 
-const InputFile: React.FC<InputFileProps> = ({
+const InputFile: React.FC<InputFileContainerProps | InputFileButtonProps> = ({
 	      label,
 	      multiple = true,
 	      previewFiles = false,
 	      typeFiles = 'all',
 	      onChange,
 	      typeInputFile: type = "button",
-	      isRequired = false,
-	      buttonStyle = {},
-	      labelButtonStyle = {},
 	      onRemoveFile,
-	      noConcatenation = false
+		  required,
+	      noConcatenation = false,
+		  ...rest
       }) => {
 
 	const [filesSelected, setFilesSelected] = React.useState<FileSelectedType[]>([]);
@@ -53,15 +52,22 @@ const InputFile: React.FC<InputFileProps> = ({
 				<Button
 					onPress={() => setShowModalMenu(!showModalMenu)}
 					label={label ?? 'Upload'}
-					labelStyle={StyleSheet.flatten([{color: '#1F3552'}, labelButtonStyle])}
+					labelStyle={StyleSheet.flatten([{color: '#1F3552'}, (rest as InputFileButtonProps).labelButtonStyle])}
 					contentStyle={StyleSheet.flatten([{
 						padding: 0,
 						marginBottom: 30,
 						justifyContent: 'flex-start'
-					}, buttonStyle])}
+					}, (rest as InputFileButtonProps).buttonStyle])}
+					{...rest}
 				/>
 			) : (
-				<Container iconColor={"#1F3552"} onPress={() => setShowModalMenu(!showModalMenu)} label={label ?? 'Upload'} required={isRequired} />
+				<Container 
+					iconColor={"#1F3552"} 
+					onPress={() => setShowModalMenu(!showModalMenu)} 
+					label={label ?? 'Upload'} 
+					required={required}
+					{...rest}
+				/>
 			)}
 			{renderPreviewFiles}
 			<ModalOptionsUploadFile

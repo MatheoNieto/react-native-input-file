@@ -1,7 +1,7 @@
 import {ViewStyle, TextStyle} from 'react-native'
 import {Ionicons} from "@expo/vector-icons";
 
-export type InputFileProps = {
+type InputFileProps = {
 	selectedFiles?: () => void;
 	multiple?: boolean;
 	previewFiles?: boolean;
@@ -10,12 +10,28 @@ export type InputFileProps = {
 	onChange?: (dataFiles?: FileSelectedType[]) => void;
 	label?: string;
 	typeInputFile?: "container" | "button",
-	isRequired?: boolean;
-	buttonStyle?: ViewStyle;
-	labelButtonStyle?: TextStyle;
+	required?: boolean;
 	onRemoveFile?: (indexFile: number) => void
 	noConcatenation?: boolean;
 }
+
+export type InputFileContainerProps = {
+	typeInputFile: "container";
+	containerStyle?: ViewStyle;
+	labelContainer?: TextStyle;
+} & InputFileProps
+
+export type InputFileButtonProps = {
+	typeInputFile: "button";
+	buttonStyle?: ViewStyle;
+	labelButtonStyle?: TextStyle;
+	disabled?: boolean;
+	isLoading?: boolean;
+	iconSize?: number;
+	colorLoading?: string;
+	icon?: keyof typeof Ionicons.glyphMap;
+	iconColor?: string;
+} & InputFileProps
 
 export type FileSelectedType = {
 	mimeType: string;
